@@ -1,4 +1,6 @@
 ---
+import { Image } from "astro:assets";
+
 type Photo = {
 	file: string;
 	focalLength: string;
@@ -77,6 +79,7 @@ const photos: Photo[] = [
 ];
 
 const getPhotoTitle = (filename: string) => filename.replace(".JPG", "").replace("_", " ");
+const isInitiallyVisible = (index: number) => index === 0 || index === 1 || index === photos.length - 1;
 ---
 
 <html lang="en">
@@ -109,10 +112,12 @@ const getPhotoTitle = (filename: string) => filename.replace(".JPG", "").replace
 								target="_blank"
 								aria-label={`Open ${getPhotoTitle(photo.file)} full size`}
 							>
-								<img
+								<Image
 									src={`/images/${photo.file}`}
 									alt={getPhotoTitle(photo.file)}
-									loading={index === 0 ? "eager" : "lazy"}
+									width={1200}
+									height={800}
+									loading={isInitiallyVisible(index) ? "eager" : "lazy"}
 								/>
 							</a>
 							<span class="photo-details">
@@ -165,6 +170,7 @@ const getPhotoTitle = (filename: string) => filename.replace(".JPG", "").replace
 
 	.carousel {
 		position: relative;
+		overflow: clip;
 	}
 
 	.carousel-track {
@@ -214,6 +220,11 @@ const getPhotoTitle = (filename: string) => filename.replace(".JPG", "").replace
 		height: min(58vw, 36rem);
 		object-fit: contain;
 		image-orientation: from-image;
+	}
+
+	.carousel-slide.previous img,
+	.carousel-slide.next img {
+		object-fit: cover;
 	}
 
 	.photo-details {
@@ -299,11 +310,12 @@ const getPhotoTitle = (filename: string) => filename.replace(".JPG", "").replace
 		}
 
 		.carousel-track {
-			min-height: 70vw;
+			height: calc(92vw + 3.5rem);
+			min-height: 0;
 		}
 
 		.carousel-slide {
-			width: 78vw;
+			width: 88vw;
 		}
 
 		.carousel-slide.previous {
@@ -315,13 +327,13 @@ const getPhotoTitle = (filename: string) => filename.replace(".JPG", "").replace
 		}
 
 		.carousel-slide img {
-			height: 65vw;
+			height: 92vw;
 		}
 
 		.carousel-button {
 			width: 2.5rem;
 			height: 2.5rem;
-			top: 32.5vw;
+			top: 46vw;
 		}
 	}
 </style>
