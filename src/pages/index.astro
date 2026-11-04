@@ -227,6 +227,17 @@ const isInitiallyVisible = (index: number) => index === 0 || index === 1 || inde
 		object-fit: contain;
 	}
 
+	@media (max-width: 600px) {
+		.carousel-slide img {
+			opacity: 0;
+			transition: opacity 180ms ease;
+		}
+
+		.carousel-slide img.is-loaded {
+			opacity: 1;
+		}
+	}
+
 	.photo-details {
 		display: block;
 		margin-top: 0.75rem;
@@ -366,6 +377,23 @@ const isInitiallyVisible = (index: number) => index === 0 || index === 1 || inde
 	let activeIndex = 0;
 	let touchStartX: number | null = null;
 
+	const revealImage = (image: HTMLImageElement) => {
+		if (image.complete && image.naturalWidth > 0) {
+			image.classList.add("is-loaded");
+			return;
+		}
+
+		image.addEventListener("load", () => image.classList.add("is-loaded"), { once: true });
+	};
+
+	const preloadImage = (index: number) => {
+		const image = slides[index]?.querySelector<HTMLImageElement>("img");
+		if (!image) return;
+
+		image.loading = "eager";
+		revealImage(image);
+	};
+
 	const updateCarousel = (nextIndex: number) => {
 		activeIndex = (nextIndex + slides.length) % slides.length;
 
@@ -383,6 +411,11 @@ const isInitiallyVisible = (index: number) => index === 0 || index === 1 || inde
 		if (counter) {
 			counter.textContent = `${activeIndex + 1} / ${slides.length}`;
 		}
+
+		const activeImage = slides[activeIndex]?.querySelector<HTMLImageElement>("img");
+		if (activeImage) revealImage(activeImage);
+		preloadImage((activeIndex + 1) % slides.length);
+		preloadImage((activeIndex - 1 + slides.length) % slides.length);
 	};
 
 	previousButton?.addEventListener("click", () => updateCarousel(activeIndex - 1));
