@@ -1,6 +1,4 @@
 ---
-import { Image } from "astro:assets";
-
 type Photo = {
 	file: string;
 	focalLength: string;
@@ -24,8 +22,10 @@ const photos: Photo[] = [
 	{ file: "IMG_1352.JPG", focalLength: "23mm", aperture: "f/4.5", shutter: "1/160s", date: "Oct '25" },
 	{ file: "IMG_1372.JPG", focalLength: "33mm", aperture: "f/6.3", shutter: "1/400s", date: "Oct '25" },
 	{ file: "IMG_1464.JPG", focalLength: "17mm", aperture: "f/8", shutter: "1/500s", date: "Oct '25" },
+	{ file: "IMG_1469.JPG", focalLength: "35mm", aperture: "f/2.8", shutter: "1/80s", date: "Oct '25" },
 	{ file: "IMG_1476.JPG", focalLength: "35mm", aperture: "f/2.8", shutter: "1/40s", date: "Oct '25" },
 	{ file: "IMG_1710.JPG", focalLength: "26mm", aperture: "f/7.1", shutter: "1/400s", date: "Nov '25" },
+	{ file: "IMG_1716.JPG", focalLength: "35mm", aperture: "f/4", shutter: "1/160s", date: "Nov '25" },
 	{ file: "IMG_1768.JPG", focalLength: "35mm", aperture: "f/3.5", shutter: "1/125s", date: "Nov '25" },
 	{ file: "IMG_1771.JPG", focalLength: "27mm", aperture: "f/3.5", shutter: "1/125s", date: "Nov '25" },
 	{ file: "IMG_1801.JPG", focalLength: "22mm", aperture: "f/6.3", shutter: "1/400s", date: "Nov '25" },
@@ -33,6 +33,7 @@ const photos: Photo[] = [
 	{ file: "IMG_1930.JPG", focalLength: "22mm", aperture: "f/5.6", shutter: "1/250s", date: "Dec '25" },
 	{ file: "IMG_2065.JPG", focalLength: "31mm", aperture: "f/2.8", shutter: "1/60s", date: "Dec '25" },
 	{ file: "IMG_2192.JPG", focalLength: "35mm", aperture: "f/4", shutter: "1/60s", date: "Dec '25" },
+	{ file: "IMG_2199.JPG", focalLength: "35mm", aperture: "f/2.8", shutter: "1/60s", date: "Dec '25" },
 	{ file: "IMG_2219.JPG", focalLength: "35mm", aperture: "f/2.8", shutter: "1/80s", date: "Dec '25" },
 	{ file: "IMG_2560.JPG", focalLength: "35mm", aperture: "f/5.6", shutter: "1/50s", date: "Feb '26" },
 	{ file: "IMG_2593.JPG", focalLength: "35mm", aperture: "f/9", shutter: "1/800s", date: "Feb '26" },
@@ -58,24 +59,30 @@ const photos: Photo[] = [
 	{ file: "IMG_3588.JPG", focalLength: "23mm", aperture: "f/8", shutter: "1/500s", date: "Apr '26" },
 	{ file: "IMG_3601.JPG", focalLength: "30mm", aperture: "f/13", shutter: "1/20s", date: "Apr '26" },
 	{ file: "IMG_3625.JPG", focalLength: "35mm", aperture: "f/9", shutter: "1/400s", date: "Apr '26" },
+	{ file: "IMG_3653.JPG", focalLength: "26mm", aperture: "f/13", shutter: "1/200s", date: "Apr '26" },
 	{ file: "IMG_3896.JPG", focalLength: "18mm", aperture: "f/22", shutter: "2s", date: "May '26" },
 	{ file: "IMG_3897.JPG", focalLength: "18mm", aperture: "f/22", shutter: "2.5s", date: "May '26" },
 	{ file: "IMG_3928.JPG", focalLength: "35mm", aperture: "f/3.2", shutter: "1/5000s", date: "May '26" },
+	{ file: "IMG_3933.JPG", focalLength: "16mm", aperture: "f/3.5", shutter: "1/2000s", date: "May '26" },
 	{ file: "IMG_3940.JPG", focalLength: "22mm", aperture: "f/10", shutter: "1/500s", date: "May '26" },
 	{ file: "IMG_3995.JPG", focalLength: "12mm", aperture: "f/10", shutter: "1/250s", date: "May '26" },
 	{ file: "IMG_4014.JPG", focalLength: "12mm", aperture: "f/4", shutter: "1/1000s", date: "May '26" },
 	{ file: "IMG_4056.JPG", focalLength: "12mm", aperture: "f/5.6", shutter: "1/20s", date: "May '26" },
 	{ file: "IMG_4121.JPG", focalLength: "35mm", aperture: "f/2.8", shutter: "1/100s", date: "May '26" },
+	{ file: "IMG_4493.JPG", focalLength: "35mm", aperture: "f/7.1", shutter: "1/400s", date: "Jun '26" },
+	{ file: "IMG_4503.JPG", focalLength: "35mm", aperture: "f/3.2", shutter: "1/2000s", date: "Jun '26" },
 	{ file: "IMG_4504.JPG", focalLength: "31mm", aperture: "f/3.2", shutter: "1/400s", date: "Jun '26" },
 	{ file: "IMG_4528.JPG", focalLength: "32mm", aperture: "f/5", shutter: "1/125s", date: "Jun '26" },
 	{ file: "IMG_4529.JPG", focalLength: "33mm", aperture: "f/5", shutter: "1/8000s", date: "Jun '26" },
 	{ file: "IMG_4530.JPG", focalLength: "30mm", aperture: "f/2.8", shutter: "1/2000s", date: "Jun '26" },
+	{ file: "IMG_4789.JPG", focalLength: "35mm", aperture: "f/8", shutter: "1/500s", date: "Aug '26" },
 	{ file: "IMG_4796.JPG", focalLength: "35mm", aperture: "f/7.1", shutter: "1/1250s", date: "Aug '26" },
 	{ file: "IMG_5178.JPG", focalLength: "28mm", aperture: "f/5.6", shutter: "1/20s", date: "Aug '26" },
 	{ file: "IMG_5184.JPG", focalLength: "35mm", aperture: "f/8", shutter: "1/320s", date: "Aug '26" },
 	{ file: "IMG_5194.JPG", focalLength: "17mm", aperture: "f/6.3", shutter: "1/200s", date: "Aug '26" },
 	{ file: "IMG_5215.JPG", focalLength: "35mm", aperture: "f/9", shutter: "1/320s", date: "Aug '26" },
 	{ file: "IMG_5475.JPG", focalLength: "30mm", aperture: "f/2.8", shutter: "1/50s", date: "Oct '26" },
+	{ file: "IMG_5482.JPG", focalLength: "12mm", aperture: "f/8", shutter: "1/40s", date: "Oct '26" },
 ];
 
 const getPhotoTitle = (filename: string) => filename.replace(".JPG", "").replace("_", " ");
@@ -105,20 +112,11 @@ const isInitiallyVisible = (index: number) => index === 0 || index === 1 || inde
 							class:list={["carousel-slide", { active: index === 0 }]}
 							data-index={index}
 						>
-							<a
-								class="image-link"
-								href={`/images/${photo.file}`}
-								target="_blank"
-								aria-label={`Open ${getPhotoTitle(photo.file)} full size`}
-							>
-								<Image
-									src={`/images/${photo.file}`}
-									alt={getPhotoTitle(photo.file)}
-									width={1200}
-									height={800}
-									loading={isInitiallyVisible(index) ? "eager" : "lazy"}
-								/>
-							</a>
+							<img
+								src={`/images/${photo.file}`}
+								alt={getPhotoTitle(photo.file)}
+								loading={isInitiallyVisible(index) ? "eager" : "lazy"}
+							/>
 							<span class="photo-details">
 								{photo.focalLength} · {photo.aperture} · {photo.shutter}
 							</span>
@@ -142,7 +140,7 @@ const isInitiallyVisible = (index: number) => index === 0 || index === 1 || inde
 
 	:global(body) {
 		margin: 0;
-		overflow-x: hidden;
+		overflow: hidden;
 		background: #ddd9d2;
 		color: #24221e;
 		font-family: Georgia, "Times New Roman", serif;
@@ -150,12 +148,13 @@ const isInitiallyVisible = (index: number) => index === 0 || index === 1 || inde
 
 	main {
 		width: min(1400px, calc(100% - 3rem));
+		height: 100dvh;
 		margin: 0 auto;
-		padding: 6rem 0 4rem;
+		padding: 2rem 0;
 	}
 
 	.intro {
-		margin-bottom: 4rem;
+		margin-bottom: 1.5rem;
 		text-align: center;
 	}
 
@@ -169,20 +168,22 @@ const isInitiallyVisible = (index: number) => index === 0 || index === 1 || inde
 
 	.carousel {
 		position: relative;
+		height: calc(100% - 5rem);
 		overflow: clip;
 	}
 
 	.carousel-track {
+		--carousel-gap: 0.5rem;
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		min-height: min(65vw, 42rem);
+		height: calc(100% - 2.5rem);
 		overflow: hidden;
 	}
 
 	.carousel-slide {
 		position: absolute;
-		width: min(68vw, 48rem);
+		width: min(62vw, 42rem);
 		opacity: 0;
 		pointer-events: none;
 		transform: translateX(100%) scale(0.82);
@@ -204,26 +205,26 @@ const isInitiallyVisible = (index: number) => index === 0 || index === 1 || inde
 	.carousel-slide.previous {
 		z-index: 1;
 		opacity: 0.28;
-		transform: translateX(-82%) scale(0.82);
+		transform: translateX(calc(-100% - var(--carousel-gap)));
 	}
 
 	.carousel-slide.next {
 		z-index: 1;
 		opacity: 0.28;
-		transform: translateX(82%) scale(0.82);
+		transform: translateX(calc(100% + var(--carousel-gap)));
 	}
 
 	.carousel-slide img {
 		display: block;
 		width: 100%;
-		height: min(58vw, 36rem);
-		object-fit: contain;
+		height: min(45vw, 30rem, calc(100dvh - 13rem));
+		aspect-ratio: 4 / 3;
+		object-fit: cover;
 		image-orientation: from-image;
 	}
 
-	.carousel-slide.previous img,
-	.carousel-slide.next img {
-		object-fit: cover;
+	.carousel-slide.active img {
+		object-fit: contain;
 	}
 
 	.photo-details {
@@ -250,7 +251,7 @@ const isInitiallyVisible = (index: number) => index === 0 || index === 1 || inde
 
 	.carousel-button {
 		position: absolute;
-		top: calc(min(58vw, 36rem) / 2);
+		top: 50%;
 		z-index: 3;
 		display: grid;
 		width: 3rem;
@@ -264,6 +265,12 @@ const isInitiallyVisible = (index: number) => index === 0 || index === 1 || inde
 		font-size: 1.5rem;
 		place-items: center;
 		transform: translateY(-50%);
+	}
+
+	.carousel-button span {
+		display: block;
+		line-height: 1;
+		transform: translateY(-0.08em);
 	}
 
 	.carousel-button:hover,
@@ -289,60 +296,75 @@ const isInitiallyVisible = (index: number) => index === 0 || index === 1 || inde
 		text-transform: uppercase;
 	}
 
-	a {
-		display: block;
-	}
-
-	a:focus-visible {
-		outline: 2px solid #6f5a3f;
-		outline-offset: 4px;
-	}
-
 	@media (max-width: 600px) {
 		main {
 			width: min(100% - 1.5rem, 1400px);
-			padding-top: 3rem;
+			height: 100dvh;
+			padding: 3rem 0 2rem;
 		}
 
 		.intro {
 			margin-bottom: 2.5rem;
 		}
 
-		.carousel-track {
-			height: calc(92vw + 3.5rem);
+		.carousel {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			height: calc(100% - 5.5rem);
 			min-height: 0;
 		}
 
+		.carousel-track {
+			display: flex;
+			align-items: flex-start;
+			justify-content: center;
+			height: fit-content;
+			min-height: 0 !important;
+			overflow: visible;
+			flex: 0 0 auto;
+		}
+
 		.carousel-slide {
-			width: 88vw;
+			display: none;
+			position: relative;
+			width: 100%;
 		}
 
-		.carousel-slide.previous {
-			transform: translateX(-76%) scale(0.78);
-		}
-
-		.carousel-slide.next {
-			transform: translateX(76%) scale(0.78);
+		.carousel-slide.active {
+			display: block;
+			opacity: 1;
+			transform: none;
 		}
 
 		.carousel-slide img {
-			height: 92vw;
+			height: auto;
+			max-width: 100%;
+			max-height: calc(100dvh - 16rem);
+			aspect-ratio: auto;
+			object-fit: contain;
+			margin: 0 auto;
 		}
 
 		.carousel-button {
-			width: 2.5rem;
-			height: 2.5rem;
-			top: 46vw;
+			display: none;
 		}
+
+		.carousel-counter {
+			margin-bottom: 0;
+		}
+
 	}
 </style>
 
 <script>
 	const slides = [...document.querySelectorAll<HTMLElement>(".carousel-slide")];
+	const carousel = document.querySelector<HTMLElement>(".carousel");
 	const previousButton = document.querySelector<HTMLButtonElement>(".carousel-button.previous");
 	const nextButton = document.querySelector<HTMLButtonElement>(".carousel-button.next");
 	const counter = document.querySelector<HTMLElement>(".carousel-counter");
 	let activeIndex = 0;
+	let touchStartX: number | null = null;
 
 	const updateCarousel = (nextIndex: number) => {
 		activeIndex = (nextIndex + slides.length) % slides.length;
@@ -365,6 +387,29 @@ const isInitiallyVisible = (index: number) => index === 0 || index === 1 || inde
 
 	previousButton?.addEventListener("click", () => updateCarousel(activeIndex - 1));
 	nextButton?.addEventListener("click", () => updateCarousel(activeIndex + 1));
+
+	carousel?.addEventListener(
+		"touchstart",
+		(event) => {
+			touchStartX = event.touches[0]?.clientX ?? null;
+		},
+		{ passive: true },
+	);
+
+	carousel?.addEventListener(
+		"touchend",
+		(event) => {
+			if (touchStartX === null) return;
+
+			const touchEndX = event.changedTouches[0]?.clientX;
+			const swipeDistance = touchEndX === undefined ? 0 : touchEndX - touchStartX;
+			touchStartX = null;
+
+			if (Math.abs(swipeDistance) < 50) return;
+			updateCarousel(swipeDistance > 0 ? activeIndex - 1 : activeIndex + 1);
+		},
+		{ passive: true },
+	);
 
 	document.addEventListener("keydown", (event) => {
 		if (event.key === "ArrowLeft") updateCarousel(activeIndex - 1);
