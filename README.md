@@ -1,7 +1,7 @@
 # astro-photography
-Not quite what it says on the tin.
+Not quite what it says on the tin - I built a simple website using the Astro framework to show off some of my photography.
 
-I built a simple website using the Astro framework to show off some of my photography. GitHub Copilot wrote the code, I took the photos though.
+GitHub Copilot wrote the code, I took the photos though.
 
 Click [here](https://louisandalens.pictures) to check it out.
 
